@@ -1,0 +1,20 @@
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        for(int i=1;i<=k;i++){
+            if(judge(nums,i)==true){
+                return  true;
+            }
+        }
+        return false;
+    }
+    public boolean judge(int[] nums,int k){
+        int i=0;
+        int j=k;
+        for(;j<nums.length;i++,j++){
+            if(nums[i]==nums[j]){
+                return true;
+            }
+        }
+        return false;
+    }
+}
