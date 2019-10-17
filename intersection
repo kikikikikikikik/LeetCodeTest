@@ -1,0 +1,23 @@
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        HashSet<Integer> set1=new HashSet<>();
+        HashSet<Integer> set2=new HashSet<>();
+        //将nums1和nums2分别转换为集合
+        for(int s1:nums1){
+            set1.add(s1);
+        }
+        for(int s2:nums2){
+            set2.add(s2);
+        }
+        //retainAll仅保留该集合在指定集合中的元素。
+        set1.retainAll(set2);
+        //set1和set2中的集合为相同集合(原set1和set2的交集)
+        int[] result=new int[set1.size()];
+        int m=0;
+        //将集合转化为数组
+        for(int k:set1){
+            result[m++]=k;
+        }
+        return result;
+    }
+}
