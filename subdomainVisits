@@ -1,0 +1,29 @@
+class Solution {
+    public List<String> subdomainVisits(String[] cpdomains) {
+          HashMap<String, Integer> map = new HashMap<>();       
+        for(String cpdomain:cpdomains){
+            String[] a;
+            a = cpdomain.split(" ");//用[]将字符串分为a[0](代表次数)和a[1](代表需要处理的字符串)
+            int n=Integer.valueOf(a[0]);//n代表出现的次数
+            String domain=a[1];//domain代表要处理的字符串
+            String[] b=domain.split("\\.");//将字符串用.切分成字符串数组
+            //分别将子字符串拼接
+            for(int i=0;i<b.length;i++) {
+                String[] c = Arrays.copyOfRange(b, i, b.length);
+                String subdomain = String.join(".",c);
+                //将子字符串放入集合中
+                int oldCount = map.getOrDefault(subdomain, 0);
+                map.put(subdomain, oldCount+n);
+            }
+        }
+         List<String> ret=new ArrayList<>();
+            for(Map.Entry<String,Integer>e:map.entrySet()){
+            String domain=e.getKey();
+            int n=e.getValue();
+            String s=String.format("%d %s",n,domain);
+            ret.add(s);
+        }
+       
+        return ret;
+    }
+}
