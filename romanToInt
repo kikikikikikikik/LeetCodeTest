@@ -1,3 +1,4 @@
+//方法一
 class Solution {
     public int romanToInt(String s) {
         char[] m=s.toCharArray();
@@ -23,6 +24,40 @@ class Solution {
                 case'C':{num+=100;continue;}
                 case'D':{num+=500;continue;}
                 default:{num+=1000;continue;}
+            }
+        }
+        return num;
+    }
+}
+//方法二
+class Solution {
+    public int romanToInt(String s) {
+        Map<String,Integer> map=new HashMap<>();
+        int num=0;
+        for(int i=0;i<s.length();i++){
+            map.put("I",1);
+            map.put("V",5);
+            map.put("X",10);
+            map.put("L",50);
+            map.put("C",100);
+            map.put("D",500);
+            map.put("M",1000);
+            map.put("IV",4);
+            map.put("IX",9);
+            map.put("XL",40);
+            map.put("XC",90);
+            map.put("CD",400);
+            map.put("CM",900);
+        }
+        for(int i=0;i<s.length();){
+            if(i<s.length()-1&&map.containsKey(s.substring(i,i+2))){
+                
+                num+=map.get(s.substring(i,i+2));
+                i+=2;
+            }
+            else{
+                num+=map.get(s.substring(i,i+1));
+                i++;
             }
         }
         return num;
