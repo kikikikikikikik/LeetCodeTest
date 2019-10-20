@@ -1,0 +1,14 @@
+import java.util.*;
+public class Solution {
+    public String replaceSpace(StringBuffer str) {
+        String x=str.toString();
+        return x.replaceAll(" ","%20");
+    }
+    /*
+    错误代码
+    String x=str.toString();
+        String[] s=x.split(" ");
+        String result=String.join("%20",s);
+        return result；
+    */
+}
