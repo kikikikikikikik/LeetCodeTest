@@ -1,0 +1,18 @@
+import java.util.*;
+import java.util.ArrayList;
+public class Solution {
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        ArrayList<Integer> result=new ArrayList<>();
+        Stack<Integer> stack=new Stack<>();
+        //将链表中的值先存放在栈中
+        while(listNode!=null){
+            stack.push(listNode.val);
+            listNode=listNode.next;
+        }
+        //由于栈的先进后出的特点，将栈中的值依次出栈并且添加进顺序表中
+        while(!stack.isEmpty()){
+            result.add(stack.pop());
+        }
+        return result;
+    }
+}
