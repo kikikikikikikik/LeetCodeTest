@@ -1,0 +1,23 @@
+import java.util.*;
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int h=haystack.length();
+        int n=needle.length();
+        if(h<n){
+            return -1;
+        }
+        //用start代表开始比较的位置
+        //用end代表结束比较的位置，第一次比较时end就是子串的长度-1位置
+        int start=0;
+        int end=n-1;
+        //循环结束条件为父串的长度大于end
+        while(h>end){
+            if(haystack.substring(start,end+1).equals(needle)){
+                return start;
+            }
+            start++;
+            end++;
+        }
+        return -1;
+    }
+}
