@@ -1,0 +1,18 @@
+class Solution {
+    public String addBinary(String a, String b) {
+        StringBuilder result=new StringBuilder();
+        //用c表示进位
+        int c=0;
+        //从最低位开始加
+        for(int i=a.length()-1,j=b.length()-1;i>=0||j>=0;i--,j--){
+            int sum=c;
+            sum+=i>=0?a.charAt(i)-'0':0;
+            sum+=j>=0?b.charAt(j)-'0':0;
+            result.append(sum%2);
+            c=sum/2;
+        }
+        result.append(c == 1 ? c : "");
+        result.reverse();
+        return result.toString();
+    }
+}
