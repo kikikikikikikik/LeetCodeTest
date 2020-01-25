@@ -1,0 +1,20 @@
+import java.util.*;
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        int[] ran=new int[26];
+        if(ransomNote.length()>magazine.length()){
+            return false;
+        }
+        for(int i=0;i<magazine.length();i++){
+            ran[magazine.charAt(i)-'a']++;
+        }
+        for(int i=0;i<ransomNote.length();i++){
+            if(ran[ransomNote.charAt(i)-'a']==0){
+                return false;
+            }else{
+                ran[ransomNote.charAt(i)-'a']--;
+            }
+        }
+        return true;
+    }
+}
