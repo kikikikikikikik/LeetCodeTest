@@ -1,0 +1,10 @@
+ public int JumpFloorII(int target) {
+        int result = 1;
+        if(target == 0){
+            return 0;
+        }
+            for(int i=1;i<target;i++){
+                result*=2;
+            }
+        return result;
+    }
