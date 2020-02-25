@@ -1,0 +1,20 @@
+public class Solution {
+    public void reOrderArray(int [] array) {
+    if (array == null || array.length < 2) {
+        return;
+ }
+        int n = array.length; 
+        for (int i = 1; i < n; i++) {
+            // 当前元素是奇数，就移动到奇数序列      
+            if (array[i] % 2 != 0) {
+                int value = array[i];
+                int cur = i;
+                while (cur > 0 && (array[cur - 1] % 2 == 0)) {
+                    array[cur] = array[cur - 1];
+                    cur--;
+                }
+                array[cur] = value;
+ } 
+}
+}
+}
