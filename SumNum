@@ -1,0 +1,23 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            int n = sc.nextInt();
+            mul(n);
+        }
+    }
+    private static int cal(int n){
+        int sum = 0;
+        while(n>0){
+            sum+= n%10;
+            n/=10;
+        }
+        return sum;
+    }
+    private static void mul(int n){
+        int num = cal(n);
+        int m = cal(n*n);
+        System.out.println(num+" "+m);
+    }
+}
