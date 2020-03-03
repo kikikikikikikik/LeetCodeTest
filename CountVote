@@ -12,6 +12,7 @@ public class Main{
             result(str1,arr1,str2,arr2);
         }
     }
+    
     private static void result(String n1,String[] st,String n2,String[] str){
         int n = st.length;
         int m = str.length;
