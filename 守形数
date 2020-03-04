@@ -1,0 +1,22 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            int c = sc.nextInt();
+            DeNum(c);
+        }
+    }
+    private static void DeNum(int n){
+        int s = n*n;
+        String n1 = n+"";
+        String n2 = s+"";
+        for(int i=0;i<n1.length();i++){
+            if(n1.charAt(n1.length()-i-1)!=n2.charAt(n2.length()-i-1)){
+                System.out.println("No!");
+                return;
+            }
+        }
+        System.out.println("Yes!");
+    }
+}
