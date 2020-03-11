@@ -1,0 +1,66 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            int n = sc.nextInt();
+            int ping = 0,lose = 0;
+            int aWin = 0;int bWin = 0;
+            int aWinC = 0,aWinB = 0,aWinJ = 0; 
+            int bWinC = 0,bWinB = 0,bWinJ = 0;
+            for(int i=0;i<n;i++){
+                 char a = sc.next().charAt(0);
+                 char b = sc.next().charAt(0);
+                if((a=='C'&&b=='C')||(a=='B'&&b=='B')||(a=='J'&&b=='J')){
+                    ping++;
+                }else if(a=='C'&&b=='J'){
+                    aWinC++;
+                }else if(a=='C'&&b=='B'){
+                    bWinB++;
+                    lose++;
+                }else if(a=='J'&&b=='C'){
+                    bWinC++;
+                    lose++;
+                }else if(a=='J'&&b=='B'){
+                    aWinJ++;
+                }else if(a=='B'&&b=='C'){
+                    aWinB++;
+                }else if(a=='B'&&b=='J'){
+                    bWinJ++;
+                    lose++;
+                }
+            }
+            aWin = n - lose - ping;
+            System.out.println(aWin+" "+ping+" "+lose);
+            System.out.println(lose+" "+ping+" "+aWin);
+            char wa=0,wb=0;
+            if(aWinB>=aWinC){
+                if(aWinB>=aWinJ){
+                    wa = 'B';
+                }else{
+                    wa = 'J';
+                }
+            }else{
+                if(aWinC>=aWinJ){
+                    wa = 'C';
+                }else{
+                    wa = 'J';
+                }
+            }
+            if(bWinB>=bWinC){
+                if(bWinB>=bWinJ){
+                    wb = 'B';
+                }else{
+                    wb = 'J';
+                }
+            }else{
+                if(bWinC>=bWinJ){
+                    wb='C';
+                }else{
+                    wb = 'J';
+                }
+            }
+            System.out.println(wa+" "+wb);
+        }
+    }
+}
