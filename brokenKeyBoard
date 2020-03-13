@@ -1,0 +1,31 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            String s1 = sc.nextLine();
+            String s2 = sc.nextLine();
+            System.out.println(fixed(s1,s2));
+        }
+    }
+    private static String fixed(String s1,String s2){
+        StringBuilder sb = new StringBuilder();
+        Set<Character> set = new HashSet<>();
+        char[] a = s2.toUpperCase().toCharArray();
+        for(char ch:a){
+            set.add(ch);
+        }
+        char[] b = s1.toUpperCase().toCharArray();
+        Set<Character> broken = new HashSet<>();
+        for(char ch:b){
+            if(!set.contains(ch)){
+                if(!broken.contains(ch)){
+                    sb.append(ch);
+                    broken.add(ch);
+                }
+            }
+            
+        }
+        return sb.toString();
+}
+}
