@@ -1,0 +1,36 @@
+ public int calculateMax(int[] prices) {
+        int[] lprofit = new int[prices.length];
+        int[] rprofit = new int[prices.length];
+        int maxProfit = 0;
+        int minPrice = prices[0];
+        for(int i=0;i<prices.length;i++){
+            if(minPrice>prices[i]){
+                minPrice = prices[i];
+            }
+            if(maxProfit<(prices[i]-minPrice)){
+                maxProfit = (prices[i] - minPrice);
+            }
+            lprofit[i] = maxProfit;
+        }
+        maxProfit = 0;
+        rprofit[prices.length-1] = 0;
+        int maxPrice = prices[prices.length-1];
+        minPrice = prices[prices.length-1];
+        int temp;
+        for(int j=(prices.length-2);j>=0;j--){
+            if(maxPrice<prices[j]){
+                maxPrice = prices[j];
+            }
+            if(maxProfit < (temp = maxPrice - prices[j])){
+                maxProfit = temp;
+            }
+            rprofit[j] = maxProfit;
+        }
+        maxProfit = 0;
+        for(int i=0;i<prices.length;i++){
+            if((temp = lprofit[i]+rprofit[i])>maxProfit){
+                maxProfit = temp;
+            }
+        }
+        return maxProfit;
+    }
