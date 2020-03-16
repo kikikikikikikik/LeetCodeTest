@@ -1,0 +1,19 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            String str = sc.nextLine();
+            int[] ch = new int[26];
+            for(int i=0;i<str.length();i++){
+                char c = str.charAt(i);
+                if(c <= 'Z' && c >= 'A'){
+                    ch[c - 'A']++;
+                }
+            }
+            for(int i=0;i<ch.length;i++){
+                System.out.println((char)(i+'A')+":"+ch[i]);
+            }
+        }
+    }
+}
