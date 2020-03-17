@@ -1,0 +1,37 @@
+import java.util.*;
+public class Main{
+    public static String path = "";
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int p = sc.nextInt();
+        int[][] grid = new int[n][m];
+        boolean[][] visited = new boolean[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                grid[i][j] = sc.nextInt();
+            }
+        }
+        Helper(grid,0,0,visited,"",p);
+        System.out.println(path);
+    }
+    public static void Helper(int[][] grid,int i,int j,boolean[][] visited,String res,int p){
+        if(i==0&&j==grid[0].length-1&&grid[i][j] == 1){
+            if(p>=0){
+                path = res+"["+i+","+j+"]";
+            }else{
+                path = "Can not escape!";
+            }
+            return;
+        }
+        if(i>=0&&j>=0&&i<grid.length&&j<grid[0].length&&grid[i][j]==1&&!visited[i][j]){
+            visited[i][j] = true;
+            res+="["+i+","+j+"],";
+            Helper(grid,i,j+1,visited,res,p-1);
+            Helper(grid,i+1,j,visited,res,p);
+            Helper(grid,i,j-1,visited,res,p-1);
+            Helper(grid,i-1,j,visited,res,p-3);
+        }
+    }
+}
